@@ -1,0 +1,39 @@
+﻿@using Course_Work.Models
+@model Generator
+
+@{
+    ViewBag.Title = "Generator";
+}
+@Styles.Render("~/Content/Bootstrap.min.css")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h3>Сгенерувати граф для розбиття</h3>
+    <div class="form-group">
+        <h4>Вкажіть кількість вершин у графі</h4>
+        @Html.TextBoxFor(model => model.amount_ver, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        @Html.ValidationMessageFor(model => model.amount_ver, "", new { @class = "text-danger" })
+    </div>
+    <br><br>
+    <div class="form-group">
+        <h4>Вкажіть кількість ребер у графі</h4>
+        @Html.TextBoxFor(model => model.amount_r, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        @Html.ValidationMessageFor(model => model.amount_r, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Сгенерувати граф" class="btn btn-default" />
+        <h3>Згенерований граф:</h3>
+        <table>
+            
+                @for (int i = 0; i < Generator.amont_reb; i++)
+{
+    <tr>
+        @for (int j = 0; j < 3; j++) {
+
+        <td align="center">@Generator.graf[i, j]</td>}
+    </tr>
+}
+           
+        </table>
+    </div>
+}

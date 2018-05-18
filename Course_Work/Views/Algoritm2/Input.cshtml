@@ -1,0 +1,69 @@
+﻿@using Course_Work.Models
+@model Algoritm2
+
+@{
+    ViewBag.Title = "Algoritm2";
+}
+@Styles.Render("~/Content/Bootstrap.min.css")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h3>Розбити на 3 підграфи</h3>
+    <div class="form-group">
+        <h4>Вкажіть кількість вершин у першому підграфі </h4>
+        @Html.TextBoxFor(model => model.Variable1, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        @Html.ValidationMessageFor(model => model.Variable1, "", new { @class = "text-danger" })
+    </div>
+    <br><br>
+        <div class="form-group">
+        <h4>Вкажіть кількість вершин у другому підграфі </h4>
+        @Html.TextBoxFor(model => model.Variable2, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+        @Html.ValidationMessageFor(model => model.Variable2, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Розбити граф" class="btn btn-default" />
+        <h3>Вершини, що входять до першого підграфу:</h3>
+        <table>
+            <tr>
+                @for (int i = 0; i < Algoritm2.VersionFirst.Count; i++)
+                {
+
+                    <td>@Algoritm2.VersionFirst[i]</td>
+                }
+            </tr>
+        </table>
+        <h3>Вершини, що входять до другого підграфу:</h3>
+        <table>
+            <tr>
+                @for (int i = 0; i < Algoritm2.VersionSecond.Count; i++)
+                {
+
+                    <td>@Algoritm2.VersionSecond[i]</td>
+                }
+            </tr>
+        </table>
+        <h3>Вершини, що входять до третього підграфу:</h3>
+        <table>
+            <tr>
+                @for (int i = 0; i < Algoritm2.VersionThird.Count; i++)
+                {
+
+                    <td>@Algoritm2.VersionThird[i]</td>
+                }
+            </tr>
+        </table>
+        <h3> Матриця ваг</h3>
+        <table border="1">
+            @for (int i = 0; i < Sumroz.ves.Count; i++)
+            {
+                <tr>
+                    @for (int j = 0; j < Sumroz.ves.Count; j++)
+                    {
+                        <td align="center">@Sumroz.ves[i][j]</td>}
+                </tr>}
+        </table>
+        <h3>Сума розбиття:</h3>
+
+        <p> @Algoritm2.sum2</p>
+    </div>
+}

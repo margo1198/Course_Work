@@ -1,0 +1,24 @@
+﻿@using Course_Work.Models
+@model Sumroz
+
+@{
+    ViewBag.Title = "Sumroz";
+}
+@Styles.Render("~/Content/Bootstrap.min.css")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h2>Матриця ваг</h2>
+    <div class="form-group">
+    </div>
+    <table border="1">
+        @for (int i = 0; i < Sumroz.ves.Count; i++)
+        {
+            <tr>
+                @for (int j = 0; j < Sumroz.ves.Count; j++)
+                {
+                    <td align="center">@Sumroz.ves[i][j]</td>}
+            </tr>}
+    </table>
+
+}

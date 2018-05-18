@@ -1,0 +1,22 @@
+﻿@using Course_Work.Models
+@model Matrix
+
+@{
+    ViewBag.Title = "Algoritm";
+}
+@Styles.Render("~/Content/Bootstrap.min.css")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h2>Розрахувати матрицю віддаленості для заданого графа, використовуючи формулу Чекановського-Дайса</h2>
+    <div class="form-group">
+    </div>
+<table border="1">
+    @for (int i = 0; i <Matrix.road_l.Count; i++){
+        <tr>
+            @for (int j = 0; j < Matrix.road_l.Count; j++){
+            <td align="center">@Matrix.road_l[i][j]</td>}
+        </tr>}
+    </table>
+ 
+}

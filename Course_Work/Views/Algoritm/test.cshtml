@@ -1,0 +1,25 @@
+﻿@model Lis
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>test</title>
+</head>
+<body>
+    <div> 
+        <table>
+            @for (int i = 0; i < Algoritm.VersionFirst.Count; i++)
+            {
+                <tr>
+                    <td>@Algoritm.VersionFirst[i]</td>
+                </tr>}
+        </table>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿@using Course_Work.Models
+@model Algoritm
+
+@{
+    ViewBag.Title = "Algoritm";
+}
+@Styles.Render("~/Content/Bootstrap.min.css")
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <h3>Розбити на 2 підграфи</h3>
+        <div class="form-group">
+            <h4>Вкажіть кількість вершин у першому підграфі </h4>
+                @Html.TextBoxFor(model => model.Variables, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                @Html.ValidationMessageFor(model => model.Variables, "", new { @class = "text-danger" })
+        </div>
+        <br><br>
+        <div class="form-group">
+                <input type="submit" value="Розбити граф" class="btn btn-default" />
+            <h3>Вершини, що входять до першого підграфу:</h3>
+            <table> <tr>
+                @for (int i = 0; i < Algoritm.VersionFirst.Count; i++)
+                {
+                  
+                        <td>@Algoritm.VersionFirst[i]</td>
+                    }
+                </tr>
+            </table>
+<br >
+            <h3>Вершини, що входять до другого підграфу:</h3>
+
+                    @for (int i = 0; i < Algoritm.VersionSecond.Count; i++)
+                    {
+
+                        <text>@Algoritm.VersionSecond[i]</text> } <p> </p><br>
+        </div>
+        <br >
+        <h3> Матриця ваг</h3>
+         <table border="1">
+        @for (int i = 0; i < Sumroz.ves.Count; i++)
+        {
+            <tr>
+                @for (int j = 0; j < Sumroz.ves.Count; j++)
+                {
+                    <td align="center">@Sumroz.ves[i][j]</td>}
+            </tr>}
+    </table>
+            <h3>Сума розбиття:</h3>
+
+              <text>@Algoritm.sum</text>
+    }
